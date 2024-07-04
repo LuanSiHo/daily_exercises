@@ -1,6 +1,8 @@
 import 'package:daily_exercise/constants.dart';
+import 'package:daily_exercise/screens/detail_screen.dart';
 import 'package:daily_exercise/widgets/bottom_nav_bar.dart';
 import 'package:daily_exercise/widgets/category_card_widget.dart';
+import 'package:daily_exercise/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -60,13 +62,7 @@ class HomeScreen extends StatelessWidget {
                       "Good Morning Luan",
                       style: Theme.of(context).textTheme.displaySmall?.copyWith(fontWeight: FontWeight.w900),
                     ),
-                    Container(
-                        margin: EdgeInsets.symmetric(vertical: 30),
-                        padding: EdgeInsets.symmetric(horizontal: 30),
-                        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(29.5)),
-                        child: TextField(
-                            decoration:
-                                InputDecoration(icon: SvgPicture.asset("assets/icons/search.svg"), hintText: "Search", border: InputBorder.none))),
+                    SearchBar(),
                     Expanded(
                         child: GridView.count(
                       crossAxisCount: 2,
@@ -92,7 +88,11 @@ class HomeScreen extends StatelessWidget {
                         CategoryCard(
                           title: "Yoga",
                           svgSrc: "assets/icons/yoga.svg",
-                          press: () {},
+                          press: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                return DetailScreen();
+                            }));
+                          },
                         ),
                       ],
                     ))
